@@ -106,7 +106,7 @@
             let i = 1;
             styletag.innerHTML = "";
             for( elem of document.querySelectorAll(".explosion")){
-                elem.style.top = randno(10, 50)+"%";
+                elem.style.top = randno(0, 50)+"%";
                 elem.style.left = randno(0, 100)+"%";
                 if(flag){
                     elem.classList.add("exp"+ i++ +"")
