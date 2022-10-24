@@ -71,25 +71,34 @@
             star_con.insertAdjacentHTML(`afterbegin`,`<span class="star star${i}"></span>`);
         }
 
-        // Enter Mountains
         for(let i=1; i<=mountno; i++){
-            mount_con.insertAdjacentHTML(`afterbegin`,`<span class="tri" id="tri${i}"></span>`);
-            const elem = document.getElementById(`tri${i}`);
-            elem.style.left = `${randno(-60,100)}%`;
-            elem.style.borderBottom = `${randno(100,400)}px solid #182747`;
-            elem.style.borderLeft = `${randno(150,200)}px solid transparent`;
-            elem.style.borderRight = `${randno(150,250)}px solid transparent`;
-        }
+                mount_con.insertAdjacentHTML(`afterbegin`,`<span class="tri" id="tri${i}"></span>`);
+                const elem = document.getElementById(`tri${i}`);
+                elem.style.left = `${randno(-60,100)}%`;
+                elem.style.borderBottom = `${randno(100,400)}px solid #182747`;
+                elem.style.borderLeft = `${randno(150,200)}px solid transparent`;
+                elem.style.borderRight = `${randno(150,250)}px solid transparent`;
+            }
 
-        console.log(mountno)
-        for( elem of document.querySelectorAll(".star")){
-            elem.style.top = randno(0,40)+"%";
-            elem.style.left = randno(0,99)+"%";
-        }
+        // Enter Mountains
+        setInterval(() => {
+            for(let i=1; i<=mountno; i++){
+                const elem = document.getElementById(`tri${i}`);
+                elem.style.left = `${randno(-60,100)}%`;
+                elem.style.borderBottom = `${randno(100,400)}px solid #182747`;
+                elem.style.borderLeft = `${randno(150,200)}px solid transparent`;
+                elem.style.borderRight = `${randno(150,250)}px solid transparent`;
+            }
+        }, 2000);
 
         const styletag = document.head.appendChild(document.createElement("style"))
         const starstyletag = document.head.appendChild(document.createElement("style"))
         
+        for( elem of document.querySelectorAll(".star")){
+                elem.style.top = randno(0, 50)+"%";
+                elem.style.left = randno(0, 100)+"%";
+            }
+            
         const starglow = () => {
             starstyletag.innerHTML = "";
             for(let i=1; i<=starno; i++){
@@ -97,10 +106,19 @@
                 animation: glow ${randno(1,3)}s ease-in-out infinite alternate; !important}`)
             }
         }
+
+
         starglow()
         setInterval(() => {
             starglow()
         }, 3000);
+
+        setInterval(() => {
+            for( elem of document.querySelectorAll(".star")){
+                elem.style.top = randno(0, 50)+"%";
+                elem.style.left = randno(0, 100)+"%";
+            }
+        }, randno(1000,2000));
 
         const explode = (flag = 0) =>{
             let i = 1;
