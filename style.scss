@@ -1,0 +1,188 @@
+body{
+    margin: 0;
+    padding: 0;
+
+    @mixin comexp($deg){
+        transform: rotate($deg) translateY(-15px);
+    }
+    @mixin explosion($left, $top, $scale){
+        position: absolute;
+        left: $left;
+        top: $top;
+        transform: scale($scale);
+    }
+
+    @keyframes explosion{
+        0%{
+            top: 100%;
+        }
+        33%, 100%{
+            top: -51%;
+        }
+    }
+
+    @keyframes glow {
+        0% {
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0);
+        }
+        
+        100% {
+            box-shadow: -2px -4px 25px 4px rgba(217,211,211,0.76);
+        }
+      }
+
+    
+    .exp_container{
+        background-image: linear-gradient(to top, #1c2c44, #162741, #11223e, #0b1e3a, #051937, #031634, #021330, #01102d, #010f29, #010d25, #010c21, #000a1d);
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+        .cracker{
+            position: absolute;
+            width: 2px;
+            transform-origin: 50% 100%;
+            height: 80px;
+            overflow: hidden;
+        }
+        .cracker:nth-child(1){
+            @include comexp(0deg);
+        }
+        .cracker:nth-child(2){
+            @include comexp(30deg);
+        }
+        .cracker:nth-child(3){
+            @include comexp(60deg);
+        }
+        .cracker:nth-child(4){
+            @include comexp(90deg);
+        }
+        .cracker:nth-child(5){
+            @include comexp(120deg);
+        }
+        .cracker:nth-child(6){
+            @include comexp(150deg);
+        }
+        .cracker:nth-child(7){
+            @include comexp(180deg);
+        }
+        .cracker:nth-child(8){
+            @include comexp(210deg);
+        }
+        .cracker:nth-child(9){
+            @include comexp(240deg);
+        }
+        .cracker:nth-child(10){
+            @include comexp(270deg);
+        }
+        .cracker:nth-child(11){
+            @include comexp(300deg);
+        }
+        .cracker:nth-child(12){
+            @include comexp(330deg);
+        }
+        .cracker::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            height: 40px;
+            background-color: white;
+            animation: explosion 3s ease-in-out infinite;
+        }
+    
+        .explosion{
+            z-index: 1;
+            position: absolute;
+            transform: scale(2);
+        }
+        
+        .star{
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: #fff;
+            border-radius: 100%;
+            // animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        .moun_con{
+            position: absolute;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            top: 0%;
+            .tri{
+                position: absolute;
+                bottom: 0px;
+                border-bottom: 400px solid #21325E;
+                border-right: 250px solid transparent;
+                border-left: 250px solid transparent;
+            }
+        }
+   
+}
+
+.container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        height: 70%;
+        margin: 30px;
+        border-radius: 5px;
+        box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+        background-color: rgba(255,255,255,0.2);
+        border-top: 1px solid rgba(255,255,255,0.5);
+        border-left: 1px solid rgba(255,255,255,0.5);
+        backdrop-filter: blur(5px);
+        overflow: hidden;
+        .content{
+            margin: 20px;
+            h1{
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-style: italic;
+                position: absolute;
+                top: -80px;
+                right: 10px;
+                font-size: 6em;
+                color: rgba(255, 255, 255, 0.1);
+            }
+            p{
+                color: #fff;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: 400;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                font-style: italic;
+            }
+            a{
+                display: block;
+                text-align: center;
+                text-decoration: none;
+                padding: 10px;
+                background-color: #fff;
+                border-radius: 5px;
+                margin: 10px;
+                color: #2d2d2d;
+                &:hover{
+                    box-shadow: 20px 20px 50px rgba(255,255,255,0.5);
+                    transition: box-shadow 0.4s ease-in-out;
+                }
+            }
+        }
+    }
+}
